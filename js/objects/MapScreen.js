@@ -40,8 +40,6 @@ class MapScreen {
             level.addEventListener('click', () => {
                 this.santaMovingIntoCity = 10 - i;
                 this.moveSantaToCity();
-                
-                document.documentElement.requestFullscreen();
             })
         }
 
