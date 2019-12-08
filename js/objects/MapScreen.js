@@ -16,6 +16,7 @@ class MapScreen {
     }
 
     init( DOM ) {
+        document.documentElement.requestFullscreen();
 
         DOM.insertAdjacentHTML('afterbegin', `
             <div class="map">
