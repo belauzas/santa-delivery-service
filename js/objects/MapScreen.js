@@ -38,7 +38,13 @@ class MapScreen {
         this.renderLevelMap();
 
         this.DOMfullscreen.addEventListener('click', () => {
-            document.documentElement.requestFullscreen();
+            if ( this.DOMfullscreen.classList.contains('full') ) {
+                this.DOMfullscreen.classList.remove('full');
+                document.exitFullscreen();
+            } else {
+                this.DOMfullscreen.classList.add('full');
+                document.documentElement.requestFullscreen();
+            }
         })
 
         this.DOMlevels = this.DOMlevelContainer.querySelectorAll('.level.city');

@@ -51,6 +51,9 @@
                 line-height: 14px;
                 text-align: center;
             }
+            .game > .map > .top > .fullscreen.full::after {
+                content: '-';
+            }
     .game > .map > .levels {
         display: inline-block;
         position: absolute;
