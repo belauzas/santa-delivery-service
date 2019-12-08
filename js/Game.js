@@ -18,6 +18,10 @@ class SantaDeliveryService {
         const spashScreen = new SpashScreen( this.DOM );
         this.MAP_SCREEN = new MapScreen( this.DOM );
 
+        window.addEventListener('scroll', () => {
+            window.scrollTo(0,1);
+        })
+
         // start / stop animations
         window.requestAnimationFrame = window.requestAnimationFrame
             || window.mozRequestAnimationFrame
