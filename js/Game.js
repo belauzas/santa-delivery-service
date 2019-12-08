@@ -18,10 +18,6 @@ class SantaDeliveryService {
         const spashScreen = new SpashScreen( this.DOM );
         this.MAP_SCREEN = new MapScreen( this.DOM );
 
-        window.addEventListener('scroll', () => {
-            window.scrollTo(0,1);
-        })
-
         // start / stop animations
         window.requestAnimationFrame = window.requestAnimationFrame
             || window.mozRequestAnimationFrame
@@ -36,7 +32,6 @@ class SantaDeliveryService {
         const now = Date.now();
         this.dt = (now - this.lastTime) / 1000;
         this.lastTime = now;
-        
 
         this.GAME = window.requestAnimationFrame( () => this.gameLoop() );
     }

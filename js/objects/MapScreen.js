@@ -18,7 +18,9 @@ class MapScreen {
     init( DOM ) {
         DOM.insertAdjacentHTML('afterbegin', `
             <div class="map">
-                <div class="top"></div>
+                <div class="top">
+                    <div class="fullscreen"></div>
+                </div>
                 <div class="levels">
                     <div class="container">
                         <img class="track" src="./img/map-track.png">
@@ -30,9 +32,14 @@ class MapScreen {
         `)
         this.DOM = document.querySelector('.map');
         this.DOMtop = this.DOM.querySelector('.top');
+        this.DOMfullscreen = this.DOMtop.querySelector('.fullscreen');
         this.DOMlevelContainer = this.DOM.querySelector('.levels > .container');
         this.DOMsanta = this.DOMlevelContainer.querySelector('.santa');
         this.renderLevelMap();
+
+        this.DOMfullscreen.addEventListener('click', () => {
+            document.documentElement.requestFullscreen();
+        })
 
         this.DOMlevels = this.DOMlevelContainer.querySelectorAll('.level.city');
         for ( let i=0; i<this.DOMlevels.length; i++ ) {

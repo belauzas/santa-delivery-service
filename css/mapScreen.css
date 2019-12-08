@@ -11,6 +11,7 @@
     .game > .map > .top {
         display: inline-block;
         height: calc(40px + 2vh);
+        padding: 1vh;
         position: absolute;
         top: 0;
         right: 0;
@@ -19,6 +20,37 @@
         box-shadow: 0 2px 4px #0002;
         z-index: 2;
     }
+        .game > .map > .top > .fullscreen {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            float: right;
+            border: 4px solid #555;
+            position: relative;
+        }
+            .game > .map > .top > .fullscreen::before {
+                display: inline-block;
+                content: '';
+                position: absolute;
+                top: -4px;
+                bottom: -4px;
+                left: 25%;
+                right: 25%;
+                background-color: var(--c-snow-light);
+            }
+            .game > .map > .top > .fullscreen::after {
+                display: inline-block;
+                content: '+';
+                position: absolute;
+                left: -4px;
+                right: -4px;
+                top: 25%;
+                bottom: 25%;
+                background-color: var(--c-snow-light);
+                font-size: 30px;
+                line-height: 14px;
+                text-align: center;
+            }
     .game > .map > .levels {
         display: inline-block;
         position: absolute;
