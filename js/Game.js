@@ -38,4 +38,3 @@ class SantaDeliveryService {
 }
 
 const santa = new SantaDeliveryService('#game');
-console.log(santa);

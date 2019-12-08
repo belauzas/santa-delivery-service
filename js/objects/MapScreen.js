@@ -8,6 +8,7 @@ class MapScreen {
         this.DOMsanta = null;
         this.levels = null;
         this.userLevel = 1;
+        this.userLevelGame = 1;
         this.santaCurrentCity = 0;
         this.santaMovingIntoCity = 0;
         this.santaMoving = false;
@@ -28,12 +29,41 @@ class MapScreen {
                         <div class="level start"></div>
                     </div>
                 </div>
+                <div class="level-options">
+                    <div class="background"></div>
+                    <div class="popup">
+                        <div class="title">Level&nbsp;<span>1</span></div>
+                        <div class="close"></div>
+                        <div class="list">
+                            <div class="option" data-game="presents">
+                                <img src="./img/present.png">
+                            </div>
+                            <div class="option" data-game="race">
+                                <img src="./img/present.png">
+                            </div>
+                            <div class="option" data-game="deliver">
+                                <img src="./img/present.png">
+                            </div>
+                        </div>
+                        <div class="selected">
+                            <div>Collect presents</div>
+                            <div>Faster to the town</div>
+                            <div>Deliver presents</div>
+                        </div>
+                        <div class="action">
+                            <div class="play">Play</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         `)
         this.DOM = document.querySelector('.map');
         this.DOMtop = this.DOM.querySelector('.top');
         this.DOMfullscreen = this.DOMtop.querySelector('.fullscreen');
         this.DOMlevelContainer = this.DOM.querySelector('.levels > .container');
+        this.DOMlevelOptions = this.DOM.querySelector('.level-options');
+        this.DOMcloseLevelOptions = this.DOMlevelOptions.querySelector('.close');
+        this.DOMpopupTitle = this.DOMlevelOptions.querySelector('.title > span');
         this.DOMsanta = this.DOMlevelContainer.querySelector('.santa');
         this.renderLevelMap();
 
@@ -56,6 +86,15 @@ class MapScreen {
             })
         }
 
+        this.DOMcloseLevelOptions.addEventListener('click', () => {
+            this.DOMlevelOptions.classList.remove('show');
+        })
+
+        this.DOMsanta.addEventListener('click', () => {
+            if ( !this.santaMoving && this.santaCurrentCity !== 0 ) {
+                this.DOMlevelOptions.classList.add('show');
+            }
+        })
     }
 
     moveSantaToCity() {
@@ -84,6 +123,8 @@ class MapScreen {
                 this.DOMsanta.classList.remove('moving');
                 if ( this.santaMovingIntoCity !== this.santaCurrentCity ) {
                     this.moveSantaToCity();
+                } else {
+                    this.selectLevelGamePopup();
                 }
             }, 1000)
         }
@@ -100,6 +141,11 @@ class MapScreen {
                     </div>`;
         }
         this.DOMlevelContainer.insertAdjacentHTML('beforeend', HTML);
+    }
+
+    selectLevelGamePopup() {
+        this.DOMpopupTitle.textContent = this.santaCurrentCity;
+        this.DOMlevelOptions.classList.add('show');
     }
 }
 

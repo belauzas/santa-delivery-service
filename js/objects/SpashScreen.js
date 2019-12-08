@@ -11,7 +11,7 @@ class SpashScreen {
         <div class="spashScreen">
             <div class="title">
                 <div class="line">
-                    <span>Santa
+                    <span>Santa's
                         <img src="./img/santa-hat.png" class="santa-hat">
                     </span>
                 </div>

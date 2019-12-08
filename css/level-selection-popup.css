@@ -1,0 +1,173 @@
+.game > .map > .level-options {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    visibility: hidden;
+}
+    .game > .map > .level-options.show {
+        visibility: visible;
+    }
+        .level-options > .background {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: #0000;
+            transition: all 1s ease-in 0s;
+        }
+            .level-options.show > .background {
+                background-color: #0008;
+            }
+        .level-options > .popup {
+            display: inline-block;
+            width: 280px;
+            padding: 20px;
+            background-color: var(--c-blue);
+            border: 6px solid var(--c-snow);
+            box-shadow: inset 0 0 8px #000a;
+            box-shadow: 0 0 8px #0005;
+            border-radius: 20px;
+            position: absolute;
+            top: -100vh;
+            left: 50%;
+            transform: translate(-50%, 0);
+            transition: all 1s ease-out 0s;
+            text-align: center;
+        }
+            .level-options.show > .popup {
+                top: 50vh;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .popup > .title {
+                display: inline-block;
+                padding: 5px 40px;
+                font-size: 30px;
+                line-height: 30px;
+                background-color: var(--c-blue);
+                border: 3px solid var(--c-snow);
+                border-radius: 20px;
+                color: #fff;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .popup > .close {
+                display: inline-block;
+                width: 36px;
+                height: 36px;
+                background-color: var(--c-red);
+                border: 3px solid var(--c-snow);
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                left: 100%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+            }
+                .popup > .close::before,
+                .popup > .close::after {
+                    display: inline-block;
+                    content: '';
+                    width: 60%;
+                    height: 15%;
+                    background-color: var(--c-snow);
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform-origin: center;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+                .popup > .close::after {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+            .popup > .list {
+                display: inline-block;
+                width: 100%;
+                margin: 30px 0 20px;
+            }
+                .popup > .list > .option {
+                    display: inline-block;
+                    width: calc(70% / 3);
+                    float: left;
+                    margin: 0 5%;
+                    padding: 5px;
+                    border: 3px solid var(--c-snow);
+                    border-radius: 10px;
+                }
+                    .popup > .list > .option > img {
+                        display: inline-block;
+                        width: 100%;
+                    }
+            .popup > .selected {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                font-size: 20px;
+                line-height: 28px;
+                color: #fff;
+            }
+                .popup > .selected > div {
+                    display: inline-block;
+                    width: 100%;
+                }
+            .popup > .action {
+                display: inline-block;
+                width: 100%;
+                height: 50px;
+                margin-top: 30px;
+                position: relative;
+            }
+                .popup > .action > .play {
+                    display: inline-block;
+                    padding: 5px 40px;
+                    text-transform: uppercase;
+                    color: #fff;
+                    font-size: 25px;
+                    line-height: 30px;
+                    background-color: var(--c-green);
+                    border: 3px solid var(--c-snow);
+                    border-radius: 25px;
+                    animation: pulse 3s ease-in-out 2s infinite forwards;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+@keyframes pulse {
+    0% {
+        padding: 5px 40px;
+        font-size: 25px;
+        background-color: var(--c-green);
+        border-radius: 25px;
+    }
+    30% {
+        padding: 5px 40px;
+        font-size: 25px;
+        background-color: var(--c-green);
+        border-radius: 25px;
+    }
+    50% {
+        padding: 10px 45px;
+        font-size: 30px;
+        background-color: #3c3;
+        border-radius: 30px;
+    }
+    70% {
+        padding: 5px 40px;
+        font-size: 25px;
+        background-color: var(--c-green);
+        border-radius: 25px;
+    }
+    100% {
+        padding: 5px 40px;
+        font-size: 25px;
+        background-color: var(--c-green);
+        border-radius: 25px;
+    }
+}

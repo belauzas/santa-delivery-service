@@ -38,7 +38,7 @@
         position: absolute;
         width: 40px;
         top: 5px;
-        right: -15px;
+        right: -23px;
         transform: rotate(30deg);
     }
     .game > .spashScreen > .loading {
