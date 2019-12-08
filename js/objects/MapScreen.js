@@ -16,8 +16,6 @@ class MapScreen {
     }
 
     init( DOM ) {
-        document.documentElement.requestFullscreen();
-
         DOM.insertAdjacentHTML('afterbegin', `
             <div class="map">
                 <div class="top"></div>
@@ -42,6 +40,8 @@ class MapScreen {
             level.addEventListener('click', () => {
                 this.santaMovingIntoCity = 10 - i;
                 this.moveSantaToCity();
+                
+                document.documentElement.requestFullscreen();
             })
         }
 
