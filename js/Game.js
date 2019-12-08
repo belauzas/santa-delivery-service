@@ -35,6 +35,11 @@ class SantaDeliveryService {
 
         this.GAME = window.requestAnimationFrame( () => this.gameLoop() );
     }
+
+    initNewGame = () => {
+        console.log('init');
+        
+    }
 }
 
 const santa = new SantaDeliveryService('#game');

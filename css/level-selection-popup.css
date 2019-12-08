@@ -27,7 +27,7 @@
             padding: 20px;
             background-color: var(--c-blue);
             border: 6px solid var(--c-snow);
-            box-shadow: inset 0 0 8px #000a;
+            box-shadow: inset 0 0 8px #0009;
             box-shadow: 0 0 8px #0005;
             border-radius: 20px;
             position: absolute;
@@ -50,6 +50,7 @@
                 background-color: var(--c-blue);
                 border: 3px solid var(--c-snow);
                 border-radius: 20px;
+                box-shadow: 0 2px 8px #0001;
                 color: #fff;
                 position: absolute;
                 top: 0;
@@ -95,10 +96,21 @@
                     width: calc(70% / 3);
                     float: left;
                     margin: 0 5%;
-                    padding: 5px;
-                    border: 3px solid var(--c-snow);
+                    padding: 8px;
+                    border: 3px solid #999;
+                    background-color: var(--c-snow-light);
                     border-radius: 10px;
                 }
+                    .popup > .list > .option:nth-child(2) {
+                        padding: 1px;
+                    }
+                    .popup > .list > .option {
+                        padding: 1px;
+                    }
+                    .popup > .list > .option.active {
+                        border-color: #3c3;
+                        animation: vibrate 3s linear 0s infinite forwards;
+                    }
                     .popup > .list > .option > img {
                         display: inline-block;
                         width: 100%;
@@ -111,7 +123,7 @@
                 line-height: 28px;
                 color: #fff;
             }
-                .popup > .selected > div {
+                .popup > .selected > .game-name {
                     display: inline-block;
                     width: 100%;
                 }
@@ -170,4 +182,15 @@
         background-color: var(--c-green);
         border-radius: 25px;
     }
+}
+@keyframes vibrate {
+    0% { transform: rotate(0deg); }
+    2% { transform: rotate(5deg); }
+    4% { transform: rotate(-5deg); }
+    6% { transform: rotate(5deg); }
+    8% { transform: rotate(-5deg); }
+    10% { transform: rotate(5deg); }
+    12% { transform: rotate(-5deg); }
+    14% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
 }

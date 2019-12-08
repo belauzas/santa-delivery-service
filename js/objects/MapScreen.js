@@ -1,4 +1,5 @@
 import levels from '../data/levels.js';
+import GamePresents from './GamePresents.js';
 
 class MapScreen {
     constructor ( DOM ) {
@@ -7,8 +8,12 @@ class MapScreen {
         this.DOMlevelContainer = null;
         this.DOMsanta = null;
         this.levels = null;
-        this.userLevel = 1;
-        this.userLevelGame = 1;
+        this.userLevel = 5;
+        this.userLevelGame = 0;
+        this.userPlay = {
+            level: 1,
+            game: 0
+        }
         this.santaCurrentCity = 0;
         this.santaMovingIntoCity = 0;
         this.santaMoving = false;
@@ -35,20 +40,18 @@ class MapScreen {
                         <div class="title">Level&nbsp;<span>1</span></div>
                         <div class="close"></div>
                         <div class="list">
-                            <div class="option" data-game="presents">
-                                <img src="./img/present.png">
+                            <div class="option active" data-game="presents">
+                                <img src="./img/game-select/present.png">
                             </div>
                             <div class="option" data-game="race">
-                                <img src="./img/present.png">
+                                <img src="./img/game-select/race.png">
                             </div>
                             <div class="option" data-game="deliver">
-                                <img src="./img/present.png">
+                                <img src="./img/game-select/deliver.png">
                             </div>
                         </div>
                         <div class="selected">
-                            <div>Collect presents</div>
-                            <div>Faster to the town</div>
-                            <div>Deliver presents</div>
+                            <div class="game-name">Collect presents</div>
                         </div>
                         <div class="action">
                             <div class="play">Play</div>
@@ -62,8 +65,11 @@ class MapScreen {
         this.DOMfullscreen = this.DOMtop.querySelector('.fullscreen');
         this.DOMlevelContainer = this.DOM.querySelector('.levels > .container');
         this.DOMlevelOptions = this.DOM.querySelector('.level-options');
+        this.DOMlevelOptionsList = this.DOMlevelOptions.querySelectorAll('.option');
         this.DOMcloseLevelOptions = this.DOMlevelOptions.querySelector('.close');
         this.DOMpopupTitle = this.DOMlevelOptions.querySelector('.title > span');
+        this.DOMpopupGameName = this.DOMlevelOptions.querySelector('.game-name');
+        this.DOMpopupPlay = this.DOMlevelOptions.querySelector('.play');
         this.DOMsanta = this.DOMlevelContainer.querySelector('.santa');
         this.renderLevelMap();
 
@@ -86,7 +92,30 @@ class MapScreen {
             })
         }
 
+        const games = ['Collect presents', 'Go to the town', 'Deliver presents'];
+        for ( let i=0; i<this.DOMlevelOptionsList.length; i++ ) {
+            const option = this.DOMlevelOptionsList[i];
+            option.addEventListener('click', () => {
+                if ( this.userLevel === this.santaCurrentCity ) {
+                    if ( this.userLevelGame < i ) return;
+                }
+                this.DOMlevelOptions.querySelector('.option.active').classList.remove('active');
+                this.DOMlevelOptionsList[i].classList.add('active');
+                this.DOMpopupGameName.textContent = games[i];
+                this.userPlay.game = i;
+            })
+        }
+
         this.DOMcloseLevelOptions.addEventListener('click', () => {
+            this.DOMlevelOptions.classList.remove('show');
+        })
+
+        this.DOMpopupPlay.addEventListener('click', () => {
+            this.playGame( this.userPlay.level, this.userPlay.game );
+            // reset
+            this.DOMlevelOptions.querySelector('.option.active').classList.remove('active');
+            this.DOMlevelOptionsList[0].classList.add('active');
+            this.userPlay.game = 0;
             this.DOMlevelOptions.classList.remove('show');
         })
 
@@ -124,6 +153,8 @@ class MapScreen {
                 if ( this.santaMovingIntoCity !== this.santaCurrentCity ) {
                     this.moveSantaToCity();
                 } else {
+                    this.userPlay.level = this.santaCurrentCity;
+                    this.userPlay.game = 0;
                     this.selectLevelGamePopup();
                 }
             }, 1000)
@@ -146,6 +177,13 @@ class MapScreen {
     selectLevelGamePopup() {
         this.DOMpopupTitle.textContent = this.santaCurrentCity;
         this.DOMlevelOptions.classList.add('show');
+    }
+
+    playGame( level, gameType ) {
+        console.log(level, gameType);
+        if ( gameType === 0 ) {
+            new GamePresents( level );
+        }
     }
 }
 
