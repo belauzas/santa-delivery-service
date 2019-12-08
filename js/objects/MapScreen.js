@@ -9,6 +9,7 @@ class MapScreen {
         this.levels = null;
         this.userLevel = 1;
         this.santaCurrentCity = 0;
+        this.santaMovingIntoCity = 0;
         this.santaMoving = false;
 
         this.init( DOM );
@@ -38,21 +39,40 @@ class MapScreen {
         for ( let i=0; i<this.DOMlevels.length; i++ ) {
             const level = this.DOMlevels[i];
             level.addEventListener('click', () => {
-                this.moveSantaToCity(10-i);
+                this.santaMovingIntoCity = 10 - i;
+                this.moveSantaToCity();
             })
         }
 
     }
 
-    moveSantaToCity( cityIndex ) {
+    moveSantaToCity() {
         if ( !this.santaMoving ) {
+            if ( this.santaMovingIntoCity > this.userLevel ) {
+                this.santaMovingIntoCity = this.userLevel;
+            }
+            if ( this.santaMovingIntoCity === this.santaCurrentCity ) {
+                return;
+            }
+            // console.log(this.santaMovingIntoCity, this.userLevel, this.santaCurrentCity);
+            if ( this.santaCurrentCity < this.santaMovingIntoCity ) {
+                this.santaCurrentCity += 1;
+            } else if ( this.santaCurrentCity > this.santaMovingIntoCity ) {
+                this.santaCurrentCity -= 1;
+            }
+            const city = levels.filter( c => c.level === this.santaCurrentCity )[0];
+
             this.santaMoving = !this.santaMoving;
-            const city = levels.filter( c => c.level === cityIndex )[0];
+            this.DOMsanta.classList.add('moving');
             this.DOMsanta.style.top = city.top + '%';
             this.DOMsanta.style.left = city.left + '%';
             
             setTimeout(() => {
                 this.santaMoving = !this.santaMoving;
+                this.DOMsanta.classList.remove('moving');
+                if ( this.santaMovingIntoCity !== this.santaCurrentCity ) {
+                    this.moveSantaToCity();
+                }
             }, 1000)
         }
     }

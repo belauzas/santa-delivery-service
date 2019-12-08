@@ -95,7 +95,7 @@
                     display: inline-block;
                     padding: 2px 5px;
                     position: absolute;
-                    bottom: -60%;
+                    bottom: calc(-15px - 1vmin);
                     left: 50%;
                     transform: translate(-50%, 0%);
                     color: #fff;
@@ -118,3 +118,37 @@
                     z-index: 1;
                     transition: all 1s linear;
                 }
+                    .game > .map .santa.moving {
+                        animation: santaWalking 1s linear 0s 10 forwards;
+                        transform-origin: bottom center;
+                    }
+
+@keyframes santaWalking {
+    0% {
+      transform: rotate(0deg);  
+    }
+    12.5% {
+      transform: rotate(-10deg);  
+    }
+    25% {
+      transform: rotate(10deg);  
+    }
+    37.5% {
+      transform: rotate(-10deg);  
+    }
+    50% {
+      transform: rotate(10deg);  
+    }
+    62.5% {
+      transform: rotate(-10deg);  
+    }
+    75% {
+      transform: rotate(10deg);  
+    }
+    87.5% {
+      transform: rotate(-10deg);  
+    }
+    100% {
+        transform: rotate(0deg);  
+    }
+}
