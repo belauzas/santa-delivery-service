@@ -1,0 +1,125 @@
+:root {
+    --c-snow: #E2F4F7;
+    --c-red: #C71813;
+    --c-red-dark: #800C0C;
+}
+
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.game {
+    display: inline-block;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+    .game > .spashScreen {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background-color: var(--c-snow);
+    }
+        .game > .spashScreen > .title {
+            display: inline-block;
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            left: 0;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+            .game > .spashScreen > .title > .line {
+                display: inline-block;
+                width: 100%;
+            }
+            .game > .spashScreen > .title span {
+                display: inline-block;
+                color: var(--c-red);
+                font-size: 80px;
+                line-height: 70px;
+                text-shadow: 0 2px 4px #999;
+                font-weight: bold;
+                position: relative;
+            }
+        .game > .spashScreen .santa-hat {
+            display: inline-block;
+            position: absolute;
+            width: 40px;
+            top: 5px;
+            right: -15px;
+            transform: rotate(30deg);
+        }
+        .game > .spashScreen > .loading {
+            display: inline-block;
+            height: 30px;
+            position: absolute;
+            left: 25%;
+            right: 25%;
+            bottom: 80px;
+            border: 4px solid #fff;
+            border-radius: 15px;
+            background-color: #eee;
+        }
+            .game > .spashScreen > .loading > .bar {
+                display: inline-block;
+                height: 100%;
+                width: 0%;
+                border-radius: 15px;
+                background-color: #0f3;
+                animation: bar 1s ease-in-out 0s 1 forwards;
+            }
+            .game > .spashScreen > .loading > .tree {
+                display: inline-block;
+                width: 30px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                transform: translate(-50%, 0);
+                transform-origin: bottom center;
+                animation: tree 1s ease-in-out 0s 1 forwards;
+            }
+
+@keyframes bar {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+@keyframes tree {
+    0% {
+        left: 0%;
+        transform: translate(-50%, 0) rotate(0deg);
+    }
+    5% {
+        transform: translate(-50%, 0) rotate(-10deg);
+    }
+    8% {
+        transform: translate(-50%, 0) rotate(-30deg);
+    }
+    85% {
+        transform: translate(-50%, 0) rotate(-30deg);
+    }
+    90% {
+        transform: translate(-50%, 0) rotate(-10deg);
+    }
+    95% {
+        transform: translate(-50%, 0) rotate(15deg);
+    }
+    100% {
+        left: 100%;
+        transform: translate(-50%, 0) rotate(0deg);
+    }
+}
