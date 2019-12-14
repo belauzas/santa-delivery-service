@@ -28,6 +28,12 @@ class PresentCollector {
             HTML += `
                 <div class="floor">
                     <div class="top">
+                        <div class="lamp">
+                            <div class="bulb"></div>
+                        </div>
+                        <div class="lamp">
+                            <div class="bulb"></div>
+                        </div>
                     </div>
                     <div class="middle">
                         <div class="line top"></div>
@@ -44,6 +50,13 @@ class PresentCollector {
                 </div>`;
         }
         this.DOM.innerHTML = `
+            <div class="header">
+                <div class="score">
+                    <img src="./img/game-collector/present.png">
+                    <div class="value">0</div>
+                </div>
+                <div class="timer">00:00</div>
+            </div>
             <div class="floors floors-${this.floors.length}">
                 ${HTML}
             </div>`;

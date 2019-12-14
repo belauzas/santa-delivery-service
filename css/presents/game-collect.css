@@ -11,10 +11,43 @@
     .game > .game-content.show {
         z-index: 3;
     }
+    .game-content > .header {
+        display: inline-block;
+        width: 100%;
+        height: 40px;
+        padding: 5px 20px;
+        background-color: var(--c-snow);
+    }
+        .game-content > .header > * {
+            display: inline-block;
+            height: 100%;
+            line-height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .game-content > .header > .score {
+            float: left;
+        }
+            .score > img {
+                display: inline-block;
+                height: 20px;
+                float: left;
+                margin: 5px 10px 5px 0;
+            }
+            .score > .value {
+                display: inline-block;
+                float: left;
+            }
+        .game-content > .header > .timer {
+            float: right;
+            letter-spacing: 2px;
+        }
     .game-content > .floors {
         display: inline-block;
         width: 100%;
-        height: 100%;
+        height: calc(100% - 40px);
+        box-shadow: 0 2px 8px #3335;
+        overflow: hidden;
     }
         .game-content > .floors > .floor {
             display: inline-block;
@@ -23,7 +56,25 @@
             border-top: 10px solid #B55D35;
             border-bottom: 10px solid #612722;
             background-color: #ccc;
+            overflow: hidden;
+            position: relative;
         }
+            .game-content > .floors.floors-1 > .floor {
+                height: 100%;
+                zoom: 1;
+            }
+            .game-content > .floors.floors-2 > .floor {
+                height: 50%;
+                zoom: 0.9;
+            }
+            .game-content > .floors.floors-3 > .floor {
+                height: calc(100% / 3);
+                zoom: 0.8;
+            }
+            .game-content > .floors.floors-4 > .floor {
+                height: 25%;
+                zoom: 0.6;
+            }
             .floor > * {
                 display: inline-block;
                 width: 100%;
@@ -32,6 +83,46 @@
             .floor > .top {
                 height: 0;
             }
+            .floor .lamp {
+                display: inline-block;
+                width: 40px;
+                height: 30px;
+                border-top: 20px solid red;
+                border-radius: 50%;
+                position: absolute;
+                bottom: 150px;
+                left: calc((100% - 80px) / 3);
+                z-index: 1;
+            }
+                .floor .lamp + .lamp {
+                    left: calc((100% - 80px) / 3 * 2 + 40px);
+                }
+                .floor .lamp::before {
+                    display: inline-block;
+                    content: '';
+                    width: 4px;
+                    height: 100vh;
+                    position: absolute;
+                    bottom: 30px;
+                    left: calc(50% - 2px);
+                    background-color: #333;
+                }
+                .floor .lamp > .bulb {
+                    display: inline-block;
+                    width: 20px;
+                    height: 13px;
+                    margin: -3px 0 0 10px;
+                    border: none;
+                    border-bottom: 10px solid #ffff90;
+                    border-radius: 0 0 50% 50%;
+                    box-shadow:
+                        0 10px 10px 0px #fff,
+                        0 20px 20px 0px #fff,
+                        0 30px 30px 0px #fff,
+                        0 40px 40px 5px #fff,
+                        0 50px 50px 10px #fff,
+                        0 60px 60px 15px #fff;
+                }
             .floor > .middle {
                 height: 100%;
                 background-color: #eee;

@@ -17,6 +17,30 @@ export default {
                 min: 3,
                 max: 5
             }
+        },
+        {
+            speed: 100,
+            ratio: 0.5,
+            time: {
+                min: 3,
+                max: 5
+            }
+        },
+        {
+            speed: 100,
+            ratio: 0.5,
+            time: {
+                min: 3,
+                max: 5
+            }
+        },
+        {
+            speed: 100,
+            ratio: 0.5,
+            time: {
+                min: 3,
+                max: 5
+            }
         }
     ]
 }
