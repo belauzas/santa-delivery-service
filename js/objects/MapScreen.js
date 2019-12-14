@@ -8,7 +8,7 @@ class MapScreen {
         this.DOMlevelContainer = null;
         this.DOMsanta = null;
         this.levels = null;
-        this.userLevel = 5;
+        this.userLevel = 1;
         this.userLevelGame = 0;
         this.userPlay = {
             level: 1,
@@ -59,6 +59,7 @@ class MapScreen {
                     </div>
                 </div>
             </div>
+            <div class="game-content"></div>
         `)
         this.DOM = document.querySelector('.map');
         this.DOMtop = this.DOM.querySelector('.top');

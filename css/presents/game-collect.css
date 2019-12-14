@@ -1,0 +1,129 @@
+.game > .game-content {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+    .game > .game-content.show {
+        z-index: 3;
+    }
+    .game-content > .floors {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+        .game-content > .floors > .floor {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-top: 10px solid #B55D35;
+            border-bottom: 10px solid #612722;
+            background-color: #ccc;
+        }
+            .floor > * {
+                display: inline-block;
+                width: 100%;
+                float: left;
+            }
+            .floor > .top {
+                height: 0;
+            }
+            .floor > .middle {
+                height: 100%;
+                background-color: #eee;
+                position: relative;
+                overflow: hidden;
+            }
+                .floor > .middle {
+                    background-image: url(../../img/game-collector/wall-2.png);
+                }
+                .floor > .middle > .line {
+                    display: inline-block;
+                    width: 200%;
+                    margin-left: -100%;
+                    height: 5px;
+                    background-image: repeating-linear-gradient( to right,
+                        var(--c-red) 0% 9%, 
+                        #fff 9% 10%);
+                    position: absolute;
+                    left: 0;
+                    box-shadow: 0 0 2px #333;
+                    animation: line 10s linear 0s infinite forwards;
+                }
+                    .floor > .middle > .line.top {
+                        bottom: 45px;
+                    }
+                    .floor > .middle > .line.bottom {
+                        bottom: 30px;
+                        transform: rotate(180deg);
+                        animation-direction: reverse;
+                    }
+                .floor > .middle > .leg {
+                    display: inline-block;
+                    width: 40px;
+                    height: 90px;
+                    background-color: var(--c-blue);
+                    position: absolute;
+                    bottom: -30px;
+                    border-radius: 20px;
+                    transform-origin: 20px 20px;
+                    box-shadow: 0 2px 4px #3338;
+                }
+                    .leg > .circle {
+                        top: 10px;
+                        left: 10px;
+                    }
+                    .floor > .middle > .leg.left {
+                        left: -20px;
+                        transform: rotate(-15deg);
+                    }
+                    .floor > .middle > .leg.right {
+                        right: -20px;
+                        transform: rotate(15deg);
+                    }
+            .floor .circle {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                background-color: var(--c-snow);
+                background-color: #ccc;
+                position: absolute;
+                border-radius: 10px;
+                overflow: hidden;
+                transform-origin: center;
+            }
+                .floor .circle::after {
+                    display: inline-block;
+                    content: '';
+                    width: 100%;
+                    height: 20%;
+                    background-color: var(--c-red);
+                    position: absolute;
+                    top: 40%;
+                    left: 0;
+                    animation: legCircle 1s linear 0s infinite forwards;
+                }
+            .floor > .bottom {
+                height: 0;
+            }
+
+@keyframes legCircle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes line {
+    0% {
+        margin-left: -100%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
