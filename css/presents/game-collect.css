@@ -21,7 +21,7 @@
         .game-content > .header > * {
             display: inline-block;
             height: 100%;
-            line-height: 30px;
+            line-height: 35px;
             font-size: 20px;
             font-weight: bold;
         }
@@ -132,50 +132,74 @@
                 .floor > .middle {
                     background-image: url(../../img/game-collector/wall-2.png);
                 }
-                .floor > .middle > .line {
-                    display: inline-block;
-                    width: 200%;
-                    margin-left: -100%;
-                    height: 5px;
-                    background-image: repeating-linear-gradient( to right,
-                        var(--c-red) 0% 9%, 
-                        #fff 9% 10%);
-                    position: absolute;
-                    left: 0;
-                    box-shadow: 0 0 2px #333;
-                    animation: line 10s linear 0s infinite forwards;
-                }
-                    .floor > .middle > .line.top {
-                        bottom: 45px;
+                    .floor > .middle > .presents {
+                        display: inline-block;
+                        width: 100%;
+                        height: 0px;
+                        position: absolute;
+                        left: 0;
+                        bottom: 50px;
                     }
-                    .floor > .middle > .line.bottom {
-                        bottom: 30px;
-                        transform: rotate(180deg);
-                        animation-direction: reverse;
+                        .floor > .middle > .presents > .present {
+                            display: inline-block;
+                            width: 40px;
+                            height: 40px;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0px;
+                            background-image: url(../../img/game-collector/present.png);
+                            background-size: contain;
+                            background-position: bottom center;
+                            background-repeat: no-repeat;
+                            /* animation: present 5s linear 0s 1 paused forwards; */
+                        }
+                            .floor > .middle > .presents > .present.run {
+                                animation-play-state: running;
+                            }
+                    .floor > .middle > .line {
+                        display: inline-block;
+                        width: 200%;
+                        margin-left: -100%;
+                        height: 5px;
+                        background-image: repeating-linear-gradient( to right,
+                            var(--c-red) 0% 9%, 
+                            #fff 9% 10%);
+                        position: absolute;
+                        left: 0;
+                        box-shadow: 0 0 2px #333;
+                        animation: line 10s linear 0s infinite forwards;
                     }
-                .floor > .middle > .leg {
-                    display: inline-block;
-                    width: 40px;
-                    height: 90px;
-                    background-color: var(--c-blue);
-                    position: absolute;
-                    bottom: -30px;
-                    border-radius: 20px;
-                    transform-origin: 20px 20px;
-                    box-shadow: 0 2px 4px #3338;
-                }
-                    .leg > .circle {
-                        top: 10px;
-                        left: 10px;
+                        .floor > .middle > .line.top {
+                            bottom: 45px;
+                        }
+                        .floor > .middle > .line.bottom {
+                            bottom: 30px;
+                            transform: rotate(180deg);
+                            animation-direction: reverse;
+                        }
+                    .floor > .middle > .leg {
+                        display: inline-block;
+                        width: 40px;
+                        height: 90px;
+                        background-color: var(--c-blue);
+                        position: absolute;
+                        bottom: -30px;
+                        border-radius: 20px;
+                        transform-origin: 20px 20px;
+                        box-shadow: 0 2px 4px #3338;
                     }
-                    .floor > .middle > .leg.left {
-                        left: -20px;
-                        transform: rotate(-15deg);
-                    }
-                    .floor > .middle > .leg.right {
-                        right: -20px;
-                        transform: rotate(15deg);
-                    }
+                        .leg > .circle {
+                            top: 10px;
+                            left: 10px;
+                        }
+                        .floor > .middle > .leg.left {
+                            left: -20px;
+                            transform: rotate(-15deg);
+                        }
+                        .floor > .middle > .leg.right {
+                            right: -20px;
+                            transform: rotate(15deg);
+                        }
             .floor .circle {
                 display: inline-block;
                 width: 20px;
@@ -201,6 +225,10 @@
             .floor > .bottom {
                 height: 0;
             }
+            .floors.stop *,
+            .floors.stop *::after {
+                animation-play-state: paused!important;
+            }
 
 @keyframes legCircle {
     0% {
@@ -216,5 +244,13 @@
     }
     100% {
         margin-left: 0;
+    }
+}
+@keyframes present {
+    0% {
+        left: -40px;
+    }
+    100% {
+        left: calc(100% + 40px);
     }
 }

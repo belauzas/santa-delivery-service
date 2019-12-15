@@ -1,5 +1,5 @@
 import levels from '../data/levels.js';
-import GamePresents from './GamePresents.js';
+import GamePresents from './collector/GamePresents.js';
 
 class MapScreen {
     constructor ( DOM ) {

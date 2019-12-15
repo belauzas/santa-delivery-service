@@ -7,39 +7,39 @@
     // time: how often item appears/spawns
 
 export default {
-    timeLimit: 60,
+    timeLimit: 600,
     collectionSize: 30,
     floors: [
         {
-            speed: 100,
+            speed: 200,
             ratio: 0.5,
             time: {
-                min: 3,
-                max: 5
+                min: 1,
+                max: 2
             }
         },
         {
-            speed: 100,
+            speed: 200,
             ratio: 0.5,
             time: {
-                min: 3,
-                max: 5
+                min: 1,
+                max: 2
             }
         },
         {
-            speed: 100,
+            speed: 200,
             ratio: 0.5,
             time: {
-                min: 3,
-                max: 5
+                min: 1,
+                max: 2
             }
         },
         {
-            speed: 100,
+            speed: 200,
             ratio: 0.5,
             time: {
-                min: 3,
-                max: 5
+                min: 1,
+                max: 2
             }
         }
     ]
